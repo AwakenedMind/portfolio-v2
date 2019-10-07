@@ -38,7 +38,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <GlobalStyle />
-      <main>{children}</main>
+      <main style={{ margin: "0px 150px", margin: "0 auto", width: '100%' }}>{children}</main>
     </>
   )
 }
