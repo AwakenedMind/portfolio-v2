@@ -34,6 +34,16 @@ const NavigationLinks = styled.div`
 ) {
       font-size: 1.8em;
   }
+
+  @media only screen and (max-width: 50em) {
+    font-size: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
 `
 
 const DescriptionWrapper = styled.div`
