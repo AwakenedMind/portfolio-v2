@@ -94,6 +94,9 @@ const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
     line-height: 1.3;
     font-family: ${fonts.Calibre};
+
+    background: #182D4B;
+
   }
 
   * {
@@ -106,6 +109,10 @@ const GlobalStyle = createGlobalStyle`
   h4,
   h5 {
     margin: 0 0 0.6em 0;
+  }
+
+  img {
+    margin: 0;
   }
 `
 

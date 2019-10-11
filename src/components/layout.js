@@ -10,6 +10,7 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import "./layout.css"
 import GlobalStyle from '../styles/GlobalStyle'
+import styled from 'styled-components'
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -35,10 +36,20 @@ const Layout = ({ children }) => {
   //   }
   // `
 
+  const MainWrapper = styled.main`
+    padding-left: 100px;
+    margin: 0 auto; 
+    width: 100%;
+
+    @media screen and (max-width: 992px) {
+      padding: 0;
+    }
+  `
+
   return (
     <>
       <GlobalStyle />
-      <main>{children}</main>
+      <MainWrapper>{children}</MainWrapper>
     </>
   )
 }
