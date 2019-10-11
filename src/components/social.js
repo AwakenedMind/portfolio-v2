@@ -17,12 +17,18 @@ const SocialBar = styled.section`
   justify-content: center;
   align-items: flex-end;
   padding-bottom: calc(1.618rem * 3);
+
+  @media only screen and (max-width: 67.5em) {
+    display: none;
+}
 `
 
 const SocialLinks = styled.ul`
   display: flex;
   flex-direction: column;
   list-style-type: none;
+  padding: 0;
+  margin: 0;
 `
 
 const SocialLink = styled.li`
