@@ -139,7 +139,7 @@ const ProjectDescriptionParagraph = styled.p`
   background: #182D4B;
   padding: 1rem;
   /* margin-right: 1rem; */
-
+  font-size: 1.2em;
   /* iMac + Large Screens */
   @media only screen and (min-width: 160em) {
     font-size: 1.2em;
@@ -147,7 +147,7 @@ const ProjectDescriptionParagraph = styled.p`
 
   @media only screen and (max-width: 50em) {
     font-size: 1.4em;
-}
+  }
 `
 
 const ProjectDescriptionList = styled.ul`
