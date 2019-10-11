@@ -210,7 +210,7 @@ const GotoImage = styled.img`
 const Work = () => {
   const projectBreak = 800
 
-  const [width, setWidth] = React.useState(window.innerWidth)
+  const [width, setWidth] = React.useState(null)
 
   React.useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth)
