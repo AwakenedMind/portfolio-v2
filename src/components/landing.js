@@ -1,8 +1,7 @@
 import React from 'react'
 import Reacto from '../images/Reacto.svg'
 import styled from 'styled-components'
-
-
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 const LandingWrapper = styled.section`
   height: 100vh;
@@ -25,25 +24,23 @@ const NavigationWrapper = styled.nav`
   margin-top: 1.618rem;
 `
 
-const NavigationLinks = styled.div`
+const NavigationLinks = styled.li`
   font-size: 1.4em;
   padding-right: 1.618rem;
+  list-style-type: none;
 
-  @media only screen 
-    and (min-width: 160em
-) {
-      font-size: 1.8em;
+  @media only screen and (min-width: 160em) {
+    font-size: 1.8em;
   }
 
   @media only screen and (max-width: 50em) {
     font-size: 2em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  flex-direction: column;
-}
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
 `
 
 const DescriptionWrapper = styled.div`
@@ -62,15 +59,15 @@ const DescriptionWrapper = styled.div`
     padding-top: 5rem;
     padding-left: 2rem;
     padding-right: 1rem;
-}
+  }
 
-@media only screen and (max-width: 50em) {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  flex-direction: column;
-}
+  @media only screen and (max-width: 50em) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
 
 `
 
@@ -80,24 +77,21 @@ const DescriptionHeader = styled.h1`
 
   @media screen and (max-width: 992px) {
     font-size: 4em;
-}
+  }
 
-/* iMac + Large Screens */
-@media only screen 
-   and (min-width : 160.000em
-) {
+  /* iMac + Large Screens */
+  @media only screen and (min-width : 160.000em) {
     font-size: 7em;
-}
+  }
 
-@media only screen 
-  and (max-width : 1440px) {
+  @media only screen and (max-width : 1440px) {
     font-size: 4.5em;  
-}
+  }
 
-@media only screen and (max-width: 50.000em) {
-  text-align: center;
-  font-size: 4.5em;
-}
+  @media only screen and (max-width: 50.000em) {
+    text-align: center;
+    font-size: 4.5em;
+  }
 `
 
 const DescriptionHello = styled.div`
@@ -182,12 +176,6 @@ const ReactoImage = styled.img`
       right: 0%;
   }
 
-  /* @media only screen 
-  and (max-width : 1440px) {
-    bottom: 15%;
-    right: 0%; 
-} */
-
 @media only screen 
     and (max-width : 90.000em) {
       max-width: 600px;
@@ -227,22 +215,39 @@ const DescriptionCTA = styled.button`
   @media only screen and (max-width: 50.000em) {
     padding: 18px 28px;
     font-size: 1.3em;
+  }
+`
 
-}
+const StyledLink = styled(AnchorLink)`
+  text-decoration: none;
+  color: inherit;
 `
 
 const Landing = () => {
+
+  const [loaded, setLoaded] = React.useState(false)
+
+  React.useEffect(() => {
+    setLoaded(true)
+  }, [])
+
   return (
     <LandingWrapper>
       <NavigationWrapper>
         <NavigationLinks>
-          About
+          <StyledLink href="#about">
+            About
+          </StyledLink>
         </NavigationLinks>
         <NavigationLinks>
-          Work
+          <StyledLink href="#work">
+            Work
+          </StyledLink>
         </NavigationLinks>
         <NavigationLinks>
-          Contact
+          <StyledLink href="#contact">
+            Contact
+        </StyledLink>
         </NavigationLinks>
       </NavigationWrapper>
       <DescriptionWrapper>
@@ -258,7 +263,7 @@ const Landing = () => {
         <DescriptionParagraph>
           I use Figma to create wireframes and ReactJS to build exceptional UI’s across multiple devices
         </DescriptionParagraph>
-        <DescriptionCTA>
+        <DescriptionCTA onClick={() => window.location.href = 'mailto:daspanisharmada@gmail.com'}>
           Get in Touch!
         </DescriptionCTA>
         <ReactoImage src={Reacto} />
