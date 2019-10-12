@@ -223,7 +223,7 @@ const Work = () => {
   }, [])
 
   return (
-    <WorkSection>
+    <WorkSection id="work">
       <ProjectWrapper>
         <WorkHeader>Work</WorkHeader>
         <ProjectCard>

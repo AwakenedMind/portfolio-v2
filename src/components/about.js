@@ -163,7 +163,7 @@ const SmallBlueDot = styled.img`
 
 const About = () => {
   return (
-    <AboutMeWrapper>
+    <AboutMeWrapper id="about">
       <AboutSection>
         <AboutHeaderWrapper>
           <AboutHeader>
