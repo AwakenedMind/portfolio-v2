@@ -68,22 +68,22 @@ const Social = () => {
     <SocialBar>
       <SocialLinks>
         <SocialLink>
-          <a href="https://github.com/AwakenedMind">
+          <a href="https://github.com/AwakenedMind" target="_blank">
             <GithubImage src={Github} />
           </a>
         </SocialLink>
         <SocialLink>
-          <a href="https://twitter.com/RobArteaga4">
+          <a href="https://twitter.com/RobArteaga4" target="_blank">
             <TwitterImage src={Twitter} />
           </a>
         </SocialLink>
         <SocialLink>
-          <a href="https://www.linkedin.com/in/robert-arteaga-a3ab89127/">
+          <a href="https://www.linkedin.com/in/robert-arteaga-a3ab89127/" target="_blank">
             <LinkedinImage src={Linkedin} />
           </a>
         </SocialLink>
         <SocialLink>
-          <a href="https://www.behance.net/roba1">
+          <a href="https://www.behance.net/roba1" target="_blank">
             <BehanceImage src={Behance} />
           </a>
         </SocialLink>
