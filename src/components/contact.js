@@ -73,7 +73,7 @@ margin-top: calc(1.618rem * 2);
 
 const Contact = () => {
   return (
-    <ContactWrapper>
+    <ContactWrapper id="contact">
       <ContactFlex>
         <ContactHeader>
           Available for freelance oppurtunities
