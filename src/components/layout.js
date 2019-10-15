@@ -44,6 +44,10 @@ const Layout = ({ children }) => {
     @media screen and (max-width: 992px) {
       padding: 0;
     }
+
+    @media only screen and (max-width: 70em) {
+      padding: 0;
+  }
   `
 
   return (
