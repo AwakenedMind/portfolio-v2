@@ -7,10 +7,12 @@ import Landing from '../components/landing'
 import Social from '../components/social'
 import About from '../components/about'
 import Contact from '../components/contact';
+import Navigation from '../components/navigation'
 
 const IndexPage = () => (
   <Layout>
     <Social />
+    <Navigation />
     <Landing />
     <About />
     <Work />

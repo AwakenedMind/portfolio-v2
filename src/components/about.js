@@ -11,13 +11,14 @@ const AboutMeWrapper = styled.section`
   align-items: center;
   min-height: 100vh;
 
-    @media only screen and (max-width : 90.000em) {
-      justify-content: center;
+  @media only screen and (max-width : 90.000em) {
+    justify-content: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 `
 
 const AboutSection = styled.div`
-  /* margin-left: 200px; */
   padding-left: 1rem;
   padding-right: 1rem;
   width: 100%;
@@ -33,12 +34,16 @@ const AboutHeader = styled.h3`
   font-size: 3em;
   color: #53C1DE;
   margin: 0;
-  padding-right: 3rem;
-  text-align: left;
+  text-align: center;
+  margin-bottom: calc(1.618rem * 2);
 
-  /* iMac + Large Screens */
-    @media only screen and (min-width: 160em) {
-      font-size: 4em;
+  @media only screen and (min-width: 160em) {
+    font-size: 4em;
+  }
+
+  @media only screen and (min-width: 90em) {
+    text-align: center;
+    font-size: 3em;
   }
 
 `
@@ -70,7 +75,7 @@ const AboutDescription = styled.p`
     /* iMac + Large Screens */
   @media only screen and (min-width: 160em) {
     width: 950px;
-    font-size: 1.4em;
+    font-size: 1.1em;
   }
 
   @media only screen and (max-width : 90em) {
@@ -79,7 +84,7 @@ const AboutDescription = styled.p`
 }
   @media only screen and (max-width: 50em) {
     width: 100%;
-    font-size: 1.5em;
+    font-size: 1.2em;
     margin-bottom: calc(1.618rem * 3);
     text-align: center;
 
@@ -165,15 +170,15 @@ const About = () => {
   return (
     <AboutMeWrapper id="about">
       <AboutSection>
-        <AboutHeaderWrapper>
-          <AboutHeader>
-            About
+        <AboutHeader>
+          About
         </AboutHeader>
+        {/* <AboutHeaderWrapper>
           <LargeBlueDot src={LargeDot} />
           <LargeBlueDot src={LargeDot} />
           <LargeBlueDot src={LargeDot} />
 
-        </AboutHeaderWrapper>
+        </AboutHeaderWrapper> */}
         <AboutDescription>
           My name is Robert and I am a frontend developer & designer based in Southern California. I went to school at San Jose State University, CA in 2016 and in 2017 my friend and I started our first startup. Ever since then, I’ve been fascinated with startup culture and the thrill of gaining new users to a site.
           I love keeping up and take inspiration with the latest web design trends on websites like Behance and Dribble.
