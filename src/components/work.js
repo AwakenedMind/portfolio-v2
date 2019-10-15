@@ -53,16 +53,16 @@ const ProjectWrapper = styled.div`
     width: 100%;
     padding: 0;
 }
-@media only screen and (max-width: 67.500em) {
-  /* max-width: 700px; */
-  width: 100% !important;
-  /* max-width: 600px; */
-}
+  @media only screen and (max-width: 67.500em) {
+    width: 100% !important;
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
 
-@media only screen and (max-width: 50em) {
-  padding-right: 1rem;
-  padding-left: 1rem;
-}
+  @media only screen and (max-width: 50em) {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
   
 `
 
@@ -72,6 +72,7 @@ const ProjectCard = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
+  margin-bottom: calc(1.618rem * 2);
 
   @media only screen and (max-width: 50em) {
     grid-template-columns:  1fr;
@@ -87,10 +88,6 @@ const ProjectImg = styled.img`
   width: 100%;
   object-fit: contain;
 
-  @media only screen and (max-width : 90.000em) {
-    /* height: fit-content; */
-    /* height: 100%; */
-}
 `
 
 const ProjectDescriptionWrapper = styled.div`
@@ -118,8 +115,8 @@ const ProjectDescriptionHeader = styled.h4`
   text-align: ${props => props.left ? "left" : "right"};
   font-size: 1.5em;
   color: #53C1DE;
+  padding-bottom: 0;
 
-  /* iMac + Large Screens */
   @media only screen 
     and (min-width: 160em) {
       font-size: 1.8em;
@@ -127,10 +124,9 @@ const ProjectDescriptionHeader = styled.h4`
 
   @media only screen and (max-width : 90.000em) {
     width: 100%;
-    padding-bottom: 2rem;
-}
+  }
 
-@media only screen and (max-width: 50em) {
+  @media only screen and (max-width: 50em) {
     text-align: left;
   }
 `
@@ -138,9 +134,10 @@ const ProjectDescriptionHeader = styled.h4`
 const ProjectDescriptionParagraph = styled.p`
   background: #182D4B;
   padding: 1rem;
-  /* margin-right: 1rem; */
   font-size: 1.2em;
-  /* iMac + Large Screens */
+  margin: 0;
+  margin-bottom: 1.618rem;
+
   @media only screen and (min-width: 160em) {
     font-size: 1.2em;
   }
@@ -160,26 +157,22 @@ const ProjectDescriptionList = styled.ul`
 
   @media only screen and (max-width : 90.000em) {
     width: 100%;
-    padding-bottom: 2rem;
     }
 `
 
 const ProjectDescriptionListItem = styled.li`
-  /* iMac + Large Screens */
-  @media only screen 
-    and (min-width: 160em
-) {
-      font-size: 1.2em;
+  @media only screen and (min-width: 160em) {
+    font-size: 1.2em;
   }
 
   @media only screen and (max-width : 90.000em) {
     height: fit-content;
     width: fit-content;
-}
+  }
 
-@media only screen and (max-width: 50em) {
-    font-size: 1.4em;
-}
+  @media only screen and (max-width: 50em) {
+      font-size: 1.4em;
+  }
 `
 
 const ProjectDescriptionIconList = styled.ul`
@@ -227,8 +220,9 @@ const Work = () => {
       <ProjectWrapper>
         <WorkHeader>Work</WorkHeader>
         <ProjectCard>
-          <ProjectImg src={DestroyGames} />
-
+          <a href="https://destroygames.com" target="_blank">
+            <ProjectImg src={DestroyGames} />
+          </a>
           <ProjectDescriptionWrapper>
             <ProjectDescriptionHeader>DestroyGames</ProjectDescriptionHeader>
             <ProjectDescriptionParagraph>
@@ -242,11 +236,11 @@ const Work = () => {
               <ProjectDescriptionListItem>Netlify Auth / Function</ProjectDescriptionListItem>
               <ProjectDescriptionListItem>FaunaDB</ProjectDescriptionListItem>
             </ProjectDescriptionList>
-            <ProjectDescriptionIconList>
+            {/* <ProjectDescriptionIconList>
               <ProjectDescriptionIconItem>
                 <GotoImage src={Goto} />
               </ProjectDescriptionIconItem>
-            </ProjectDescriptionIconList>
+            </ProjectDescriptionIconList> */}
           </ProjectDescriptionWrapper>
 
         </ProjectCard>
@@ -255,7 +249,9 @@ const Work = () => {
         <ProjectCard>
           {width < projectBreak ? (
             <>
-              <ProjectImg src={Crownstudio} />
+              <a href="https://github.com/AwakenedMind/CrownStudio" target="_blank">
+                <ProjectImg src={Crownstudio} />
+              </a>
               <ProjectDescriptionWrapper>
                 <ProjectDescriptionHeader left>CrownStudio</ProjectDescriptionHeader>
                 <ProjectDescriptionParagraph>
@@ -266,11 +262,11 @@ const Work = () => {
                   <ProjectDescriptionListItem>Javascript</ProjectDescriptionListItem>
                   <ProjectDescriptionListItem>Sass</ProjectDescriptionListItem>
                 </ProjectDescriptionList>
-                <ProjectDescriptionIconList left>
+                {/* <ProjectDescriptionIconList left>
                   <ProjectDescriptionIconItem>
                     <GotoImage src={Goto} />
                   </ProjectDescriptionIconItem>
-                </ProjectDescriptionIconList>
+                </ProjectDescriptionIconList> */}
               </ProjectDescriptionWrapper>
             </>
           ) : (
@@ -285,21 +281,25 @@ const Work = () => {
                     <ProjectDescriptionListItem>Javascript</ProjectDescriptionListItem>
                     <ProjectDescriptionListItem>Sass</ProjectDescriptionListItem>
                   </ProjectDescriptionList>
-                  <ProjectDescriptionIconList left>
+                  {/* <ProjectDescriptionIconList left>
                     <ProjectDescriptionIconItem>
                       <GotoImage src={Goto} />
                     </ProjectDescriptionIconItem>
-                  </ProjectDescriptionIconList>
+                  </ProjectDescriptionIconList> */}
                 </ProjectDescriptionWrapper>
-                <ProjectImg src={Crownstudio} />
+                <a href="https://github.com/AwakenedMind/CrownStudio" target="_blank">
+                  <ProjectImg src={Crownstudio} />
+                </a>
               </>
             )}
         </ProjectCard>
 
 
 
-        < ProjectCard >
-          <ProjectImg src={Bookmark} />
+        <ProjectCard >
+          <a href="https://github.com/AwakenedMind/bookmark-land-page" target="_blank">
+            <ProjectImg src={Bookmark} />
+          </a>
           <ProjectDescriptionWrapper>
             <ProjectDescriptionHeader>Bookmark App</ProjectDescriptionHeader>
             <ProjectDescriptionParagraph>
@@ -310,11 +310,11 @@ const Work = () => {
               <ProjectDescriptionListItem>Sass</ProjectDescriptionListItem>
 
             </ProjectDescriptionList>
-            <ProjectDescriptionIconList>
+            {/* <ProjectDescriptionIconList>
               <ProjectDescriptionIconItem>
                 <GotoImage src={Goto} />
               </ProjectDescriptionIconItem>
-            </ProjectDescriptionIconList>
+            </ProjectDescriptionIconList> */}
           </ProjectDescriptionWrapper>
         </ProjectCard>
 
