@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+
 import styled from 'styled-components'
 
 import Github from '../images/github.svg'
@@ -18,7 +20,7 @@ const SocialBar = styled.section`
   align-items: flex-end;
   padding-bottom: calc(1.618rem * 3);
 
-  @media only screen and (max-width: 67.5em) {
+  @media only screen and (max-width: 70em) {
     display: none;
 }
 `
@@ -64,30 +66,47 @@ const LinkedinImage = styled.img`
 `
 
 const Social = () => {
+
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setIsMounted(true), 2000);
+    return () => clearTimeout(timeout);
+  }, []);
+
   return (
     <SocialBar>
-      <SocialLinks>
-        <SocialLink>
-          <a href="https://github.com/AwakenedMind" target="_blank">
-            <GithubImage src={Github} />
-          </a>
-        </SocialLink>
-        <SocialLink>
-          <a href="https://twitter.com/RobArteaga4" target="_blank">
-            <TwitterImage src={Twitter} />
-          </a>
-        </SocialLink>
-        <SocialLink>
-          <a href="https://www.linkedin.com/in/robert-arteaga-a3ab89127/" target="_blank">
-            <LinkedinImage src={Linkedin} />
-          </a>
-        </SocialLink>
-        <SocialLink>
-          <a href="https://www.behance.net/roba1" target="_blank">
-            <BehanceImage src={Behance} />
-          </a>
-        </SocialLink>
-      </SocialLinks>
+
+      <TransitionGroup>
+        {isMounted && (
+          <CSSTransition timeout={3000} className="fade">
+            <SocialLinks>
+              <SocialLink>
+                <a href="https://github.com/AwakenedMind" target="_blank" rel="noopener noreferrer">
+                  <GithubImage src={Github} />
+                </a>
+              </SocialLink>
+              <SocialLink>
+                <a href="https://twitter.com/RobArteaga4" target="_blank" rel="noopener noreferrer">
+                  <TwitterImage src={Twitter} />
+                </a>
+              </SocialLink>
+              <SocialLink>
+                <a href="https://www.linkedin.com/in/robert-arteaga-a3ab89127/" target="_blank" rel="noopener noreferrer">
+                  <LinkedinImage src={Linkedin} />
+                </a>
+              </SocialLink>
+              <SocialLink>
+                <a href="https://www.behance.net/roba1" target="_blank" rel="noopener noreferrer">
+                  <BehanceImage src={Behance} />
+                </a>
+              </SocialLink>
+            </SocialLinks>
+          </CSSTransition>
+        )}
+      </TransitionGroup>
+
+
     </SocialBar>
   )
 }
