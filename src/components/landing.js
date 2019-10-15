@@ -1,45 +1,26 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Reacto from '../images/Reacto.svg'
 import styled from 'styled-components'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const LandingWrapper = styled.section`
-  height: 100vh;
-  min-height: 1200px;
+  min-height: 100vh;
+  height: 100%;
   background: #182D4B;
   position: relative;
   display: flex;
   justify-content: center;
-`
-
-const NavigationWrapper = styled.nav`
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-right: 1.618rem;
-  margin-top: 1.618rem;
-`
-
-const NavigationLinks = styled.li`
-  font-size: 1.4em;
-  padding-right: 1.618rem;
-  list-style-type: none;
-
-  @media only screen and (min-width: 160em) {
-    font-size: 1.8em;
-  }
+  padding-left: 2rem;
+  padding-right: 2rem;
 
   @media only screen and (max-width: 50em) {
-    font-size: 2em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: calc(1.618rem * 2);
+  }
+
+  @media only screen and (max-width: 67.500em) {
+    padding: 0;
   }
 `
 
@@ -56,9 +37,11 @@ const DescriptionWrapper = styled.div`
   }
 
   @media only screen and (max-width: 67.500em) {
-    padding-top: 5rem;
-    padding-left: 2rem;
-    padding-right: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
   }
 
   @media only screen and (max-width: 50em) {
@@ -72,47 +55,40 @@ const DescriptionWrapper = styled.div`
 `
 
 const DescriptionHeader = styled.h1`
-  font-size: 6em;
+  font-size: 5em;
   margin-bottom: 1.618rem;
 
-  @media screen and (max-width: 992px) {
-    font-size: 4em;
-  }
 
-  /* iMac + Large Screens */
   @media only screen and (min-width : 160.000em) {
     font-size: 7em;
   }
 
-  @media only screen and (max-width : 1440px) {
-    font-size: 4.5em;  
+  @media only screen and (max-width: 67.500em) {
+    font-size: 5em;
   }
 
   @media only screen and (max-width: 50.000em) {
     text-align: center;
-    font-size: 4.5em;
+    font-size: 3.5em;
   }
 `
 
 const DescriptionHello = styled.div`
   font-size: 2em;
 
-  /* iMac + Large Screens */
-@media only screen 
-   and (min-width : 160.000em
-) {
+  @media only screen and (min-width : 160.000em) {
     font-size: 3em;
-}
+  }
 
-@media only screen 
-  and (max-width : 90.000em) {
-    font-size: 2.5em;  
-}
+  @media only screen 
+    and (max-width : 90.000em) {
+      font-size: 1.8em;  
+  }
 
-@media only screen and (max-width: 50.000em) {
-  text-align: center;
-  font-size: 2.5em;
-}
+  @media only screen and (max-width: 50.000em) {
+    text-align: center;
+    font-size: 2.5em;
+  }
 `
 
 const DescriptionTitle = styled.h2`
@@ -121,16 +97,18 @@ const DescriptionTitle = styled.h2`
   color: rgba(116, 144, 184, 0.69);
   margin-bottom: calc(1.618rem * 2);
 
-  /* iMac + Large Screens */
-  @media only screen 
-    and (min-width: 160em
-) {
-      font-size: 4em;
+  @media only screen and (min-width: 160em) {
+    font-size: 4em;
+  }
+
+  @media only screen and (max-width: 67.500em) {
+    font-size: 2.5em;
   }
 
   @media only screen and (max-width: 50.000em) {
-  text-align: center;
-}
+    text-align: center;
+    font-size: 2em;
+  }
 `
 
 const DescriptionParagraph = styled.p`
@@ -138,58 +116,58 @@ const DescriptionParagraph = styled.p`
   width: 50%;
   color: #7AC2D6;
   margin-bottom: calc(1.618rem * 3);
+  max-width: 500px;
+  margin-right: 0;
 
-    /* iMac + Large Screens */
-  @media only screen 
-    and (min-width: 160em
-) {
+  @media only screen and (min-width: 160em) {
       font-size: 2em;
       width: 70%
   }
 
-  @media only screen 
-  and (max-width : 1440px) {
+  @media only screen and (max-width : 1440px) {
     font-size: 1.6em;  
-}
+  }
 
-@media only screen and (max-width: 67.500em) {
-    font-size: 2em;
-}
+  @media only screen and (max-width: 67.500em) {
+    font-size: 1.4em;
+  }
 
-@media only screen and (max-width: 50.000em) {
-  text-align: center;
-  width: 100%;
-}
+  @media only screen and (max-width: 50.000em) {
+    text-align: center;
+    width: 100%;
+  }
 `
 
 const ReactoImage = styled.img`
   position: absolute;
-  right: 0%;
-  bottom: 20%;
+  right: 20%;
+  bottom: 10%;
+  transform: scale(0.7);
+  z-index: 2;
   
-    /* iMac + Large Screens */
-  @media only screen 
-    and (min-width : 160.000em
-) {
-      transform: scale(1.2);
-      bottom: 15%;
-      right: 0%;
+  @media only screen and (min-width : 160.000em) {
+    transform: scale(1);
   }
 
-@media only screen 
-    and (max-width : 90.000em) {
-      max-width: 600px;
-      bottom: 15%;
-      right: 0%;
-}
+  @media only screen and (max-width : 90.000em) {
+    max-width: 600px;
+    right: 0%;
+    transform: scale(0.8);
+  }
 
-@media only screen and (max-width: 67.500em) {
-  bottom: 5%;
-}
+  @media only screen and (max-width: 67.500em) {
 
-@media only screen and (max-width: 50em) {
-  display: none;
-}
+    transform: scale(0.4);
+    right: -10%;
+  }
+
+  @media only screen and (max-height: 50em) {
+    display: none;
+  }
+
+  @media only screen and (max-width: 50em) {
+    display: none;
+  }
 
 `
 
@@ -201,20 +179,19 @@ const DescriptionCTA = styled.button`
   padding: 12px 20px;
   font-size: 1.5em;
   max-width: 200px;
-  margin-left: 2rem;
+  /* margin-left: 2rem; */
 
-  @media only screen 
-    and (min-width: 160em) {
-      font-size: 1.8em;
-      padding: 14px 24px;
-      max-width: 300px;
-      margin-left: 4rem;
-
+  @media only screen and (min-width: 160em) {
+    font-size: 1.8em;
+    padding: 14px 24px;
+    max-width: 300px;
+    margin-left: 4rem;
   }
 
   @media only screen and (max-width: 50.000em) {
     padding: 18px 28px;
     font-size: 1.3em;
+  
   }
 `
 
@@ -223,51 +200,67 @@ const StyledLink = styled(AnchorLink)`
   color: inherit;
 `
 
+const DescriptionCTAWrapper = styled.div`
+  width: 100%;
+
+  @media only screen and (max-width: 50.000em) {
+
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  
+  }
+`
+
 const Landing = () => {
+  const [isMounted, setIsMounted] = useState(false);
 
-  const [loaded, setLoaded] = React.useState(false)
+  useEffect(() => {
+    const timeout = setTimeout(() => setIsMounted(true), 1000);
+    return () => clearTimeout(timeout);
+  }, []);
 
-  React.useEffect(() => {
-    setLoaded(true)
-  }, [])
+  const one = () => (<DescriptionHello style={{ transitionDelay: '100ms' }}>Hello I am</DescriptionHello>)
+
+  const two = () => (
+    <DescriptionHeader style={{ transitionDelay: '300ms' }}>Robert Arteaga</DescriptionHeader>
+  )
+
+  const three = () => (
+    <DescriptionTitle style={{ transitionDelay: '500ms' }}>
+      Frontend Developer & Designer
+    </DescriptionTitle>
+  );
+
+  const four = () => (
+    <DescriptionParagraph style={{ transitionDelay: '700ms' }}>
+      I use Figma to create wireframes and ReactJS to build exceptional UI’s across multiple devices
+  </DescriptionParagraph>
+  );
+
+  const five = () => (
+    <DescriptionCTAWrapper>
+      <DescriptionCTA style={{ transitionDelay: '900ms' }} onClick={() => window.location.href = 'mailto:daspanisharmada@gmail.com'}>
+        Get in Touch!
+      </DescriptionCTA>
+    </DescriptionCTAWrapper>
+  );
+
+  const items = [one, two, three, four, five];
 
   return (
     <LandingWrapper>
-      <NavigationWrapper>
-        <NavigationLinks>
-          <StyledLink href="#about">
-            About
-          </StyledLink>
-        </NavigationLinks>
-        <NavigationLinks>
-          <StyledLink href="#work">
-            Work
-          </StyledLink>
-        </NavigationLinks>
-        <NavigationLinks>
-          <StyledLink href="#contact">
-            Contact
-        </StyledLink>
-        </NavigationLinks>
-      </NavigationWrapper>
       <DescriptionWrapper>
-        <DescriptionHello>
-          Hello I am
-        </DescriptionHello>
-        <DescriptionHeader>
-          Robert Arteaga
-        </DescriptionHeader>
-        <DescriptionTitle>
-          Frontend Developer & Designer
-        </DescriptionTitle>
-        <DescriptionParagraph>
-          I use Figma to create wireframes and ReactJS to build exceptional UI’s across multiple devices
-        </DescriptionParagraph>
-        <DescriptionCTA onClick={() => window.location.href = 'mailto:daspanisharmada@gmail.com'}>
-          Get in Touch!
-        </DescriptionCTA>
-        <ReactoImage src={Reacto} />
+        <TransitionGroup>
+          {isMounted &&
+            items.map((item, i) => (
+              <CSSTransition key={i} classNames="fadeup" timeout={3000}>
+                {item}
+              </CSSTransition>
+            ))}
+        </TransitionGroup>
       </DescriptionWrapper>
+      <ReactoImage src={Reacto} />
     </LandingWrapper>
   )
 }
