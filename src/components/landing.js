@@ -260,7 +260,7 @@ const Landing = () => {
             ))}
         </TransitionGroup>
       </DescriptionWrapper>
-      <ReactoImage src={Reacto} />
+      {/* <ReactoImage src={Reacto} /> */}
     </LandingWrapper>
   )
 }
